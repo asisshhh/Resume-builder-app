@@ -1,28 +1,120 @@
-# Resume-builder-app
-## A simple and user-friendly Resume Builder application built with Python. This tool allows users to create professional resumes by filling in their details through a command-line interface or graphical user interface (GUI). The final resume can be saved as a PDF or other formats.
+# Resume Builder
 
-## Features:
--User-friendly Interface: Provides a simple and intuitive way to input personal details, education, work experience, and skills.
+A modern, responsive resume builder application that helps users create professional resumes quickly and easily.
 
--Multiple Resume Templates: Choose from a variety of pre-defined templates to make your resume stand out.
+## Features
 
--Export Options: Export your resume to various formats (e.g., PDF, DOCX).
+- Modern and responsive design
+- User authentication (login/register)
+- Resume template selection
+- Real-time preview
+- Download in multiple formats
+- Mobile-friendly interface
 
--Customizable Sections: Tailor your resume to emphasize different sections like education, skills, or work experience.
+## Tech Stack
 
--Clean Layout: Generates a professional-looking resume layout ready for printing or digital sharing.
+- HTML5
+- CSS3
+- JavaScript
+- Vercel (Deployment)
 
-## Requirements
+## Getting Started
 
-HTML for structure.
+### Prerequisites
 
-CSS for styling.
+- Node.js (v14 or higher)
+- npm or yarn
+- Vercel CLI
 
-Vanilla JavaScript for interactivity.
+### Installation
 
-jsPDF for generating PDF files.
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/resume-builder.git
+cd resume-builder
+```
 
-FileSaver.js for saving resumes in DOCX or other formats.
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm start
+```
+
+## Deployment
+
+### Deploying to Vercel
+
+1. Install Vercel CLI:
+```bash
+npm install -g vercel
+```
+
+2. Login to Vercel:
+```bash
+vercel login
+```
+
+3. Deploy the project:
+```bash
+vercel
+```
+
+4. For production deployment:
+```bash
+vercel --prod
+```
+
+## Project Structure
+
+```
+resume-builder/
+├── css/
+│   └── main.css
+├── js/
+│   └── auth.js
+├── images/
+├── index.html
+├── login.html
+├── register.html
+├── package.json
+├── vercel.json
+└── README.md
+```
+
+## Mobile Responsiveness
+
+The application is fully responsive and works on:
+- Mobile phones (portrait and landscape)
+- Tablets
+- Desktop computers
+- Large screens
+
+## Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- Opera (latest)
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
 ## License
 
-This project is licensed under the MIT License - see the  https://github.com/asisshhh/Resume-builder-app/blob/main/LICENSE file for details.
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Contact
+
+Your Name - your.email@example.com
+
+Project Link: [https://github.com/yourusername/resume-builder](https://github.com/yourusername/resume-builder) 
