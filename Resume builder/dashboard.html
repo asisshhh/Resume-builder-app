@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Dashboard - Resume Maker</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/main.css">
+        <style>
+            :root {
+                --blue-dark: #2563eb;
+                --blue-darker: #1d4ed8;
+                --dark: #1e293b;
+                --light: #f8fafc;
+                --success: #10b981;
+                --warning: #f59e0b;
+                --danger: #ef4444;
+            }
+            
+            body {
+                font-family: 'Inter', sans-serif;
+                line-height: 1.6;
+                color: var(--dark);
+                background: var(--light);
+                min-height: 100vh;
+            }
+
+            .navbar {
+                background: white;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                position: fixed;
+                width: 100%;
+                top: 0;
+                z-index: 1000;
+            }
+
+            .navbar-content {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem 0;
+            }
+
+            .navbar-brand {
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: var(--dark);
+            }
+
+            .navbar-brand-icon {
+                height: 40px;
+                margin-right: 1rem;
+            }
+
+            .navbar-brand-text {
+                font-size: 1.5rem;
+                font-weight: 700;
+            }
+
+            .navbar-brand-text span {
+                color: var(--blue-dark);
+            }
+
+            .nav-auth {
+                display: flex;
+                gap: 1rem;
+                align-items: center;
+            }
+
+            .btn {
+                padding: 0.75rem 1.5rem;
+                border-radius: 8px;
+                font-weight: 600;
+                text-decoration: none;
+                transition: all 0.3s ease;
+            }
+
+            .btn-primary {
+                background: var(--blue-dark);
+                color: white;
+            }
+
+            .btn-primary:hover {
+                background: var(--blue-darker);
+                transform: translateY(-2px);
+            }
+
+            .btn-secondary {
+                background: white;
+                color: var(--blue-dark);
+                border: 2px solid var(--blue-dark);
+            }
+
+            .btn-secondary:hover {
+                background: var(--blue-dark);
+                color: white;
+                transform: translateY(-2px);
+            }
+
+            .btn-danger {
+                background: var(--danger);
+                color: white;
+            }
+
+            .btn-danger:hover {
+                background: #dc2626;
+                transform: translateY(-2px);
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 2rem;
+            }
+
+            .dashboard {
+                padding-top: 6rem;
+                padding-bottom: 4rem;
+            }
+
+            .dashboard-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 2rem;
+            }
+
+            .dashboard-title {
+                font-size: 2rem;
+                font-weight: 700;
+                color: var(--dark);
+            }
+
+            .welcome-message {
+                font-size: 1.1rem;
+                color: #64748b;
+            }
+
+            .dashboard-stats {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+                margin-bottom: 3rem;
+            }
+
+            .stat-card {
+                background: white;
+                padding: 2rem;
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+                transition: all 0.3s ease;
+            }
+
+            .stat-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            }
+
+            .stat-title {
+                font-size: 1rem;
+                color: #64748b;
+                margin-bottom: 0.5rem;
+            }
+
+            .stat-value {
+                font-size: 2rem;
+                font-weight: 700;
+                color: var(--dark);
+            }
+
+            .resumes-section {
+                background: white;
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+                padding: 2rem;
+            }
+
+            .section-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: var(--dark);
+            }
+
+            .resumes-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 2rem;
+            }
+
+            .resume-card {
+                background: var(--light);
+                border-radius: 10px;
+                padding: 1.5rem;
+                transition: all 0.3s ease;
+                border: 2px solid transparent;
+            }
+
+            .resume-card:hover {
+                transform: translateY(-5px);
+                border-color: var(--blue-dark);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+
+            .resume-title {
+                font-size: 1.25rem;
+                font-weight: 600;
+                color: var(--dark);
+                margin-bottom: 0.5rem;
+            }
+
+            .resume-date {
+                font-size: 0.9rem;
+                color: #64748b;
+                margin-bottom: 1rem;
+            }
+
+            .resume-actions {
+                display: flex;
+                gap: 1rem;
+                margin-top: 1rem;
+            }
+
+            .status-badge {
+                display: inline-block;
+                padding: 0.25rem 0.75rem;
+                border-radius: 20px;
+                font-size: 0.875rem;
+                font-weight: 600;
+            }
+
+            .status-draft {
+                background: rgba(245, 158, 11, 0.1);
+                color: var(--warning);
+            }
+
+            .status-completed {
+                background: rgba(16, 185, 129, 0.1);
+                color: var(--success);
+            }
+
+            .empty-state {
+                text-align: center;
+                padding: 3rem;
+                color: #64748b;
+            }
+
+            .empty-state-icon {
+                font-size: 3rem;
+                margin-bottom: 1rem;
+            }
+
+            .empty-state-text {
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            @media (max-width: 768px) {
+                .dashboard-stats {
+                    grid-template-columns: 1fr;
+                }
+
+                .resumes-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .dashboard-header {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 1rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-content">
+                    <a href="index.html" class="navbar-brand">
+                        <img src="images/pngimg.com - cv_PNG30.png" alt="" class="navbar-brand-icon">
+                        <span class="navbar-brand-text">build <span>resume</span></span>
+                    </a>
+                    <div class="nav-auth">
+                        <a href="dashboard.html" class="btn btn-primary">Dashboard</a>
+                        <a href="index.html" class="btn btn-secondary">Home</a>
+                        <button onclick="logout()" class="btn btn-danger">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="dashboard">
+            <div class="container">
+                <div class="dashboard-header">
+                    <div>
+                        <h1 class="dashboard-title">Dashboard</h1>
+                        <p class="welcome-message">Welcome back, <span id="userName">User</span>!</p>
+                    </div>
+                    <a href="resume.html" class="btn btn-primary">Create New Resume</a>
+                </div>
+
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <div class="stat-title">Total Resumes</div>
+                        <div class="stat-value" id="totalResumes">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-title">Completed</div>
+                        <div class="stat-value" id="completedResumes">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-title">In Draft</div>
+                        <div class="stat-value" id="draftResumes">0</div>
+                    </div>
+                </div>
+
+                <div class="resumes-section">
+                    <div class="section-header">
+                        <h2 class="section-title">My Resumes</h2>
+                        <div class="resume-filters">
+                            <select id="resumeFilter" class="btn btn-secondary">
+                                <option value="all">All Resumes</option>
+                                <option value="completed">Completed</option>
+                                <option value="draft">Draft</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="resumes-grid" id="resumesGrid">
+                        <!-- Resume cards will be dynamically added here -->
+                        <div class="empty-state">
+                            <div class="empty-state-icon">📄</div>
+                            <div class="empty-state-text">You haven't created any resumes yet</div>
+                            <a href="resume.html" class="btn btn-primary">Create Your First Resume</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/auth.js"></script>
+        <script>
+            // Check authentication
+            if (!isAuthenticated()) {
+                window.location.href = 'login.html';
+            }
+
+            // Get user info
+            const user = getCurrentUser();
+            document.getElementById('userName').textContent = user.name;
+
+            // Sample resume data (replace with actual data from storage)
+            const resumes = [
+                {
+                    id: 1,
+                    title: 'Software Engineer Resume',
+                    date: '2024-03-15',
+                    status: 'completed',
+                    template: 'modern'
+                },
+                {
+                    id: 2,
+                    title: 'Marketing Manager Resume',
+                    date: '2024-03-10',
+                    status: 'draft',
+                    template: 'classic'
+                }
+            ];
+
+            // Update stats
+            function updateStats() {
+                const total = resumes.length;
+                const completed = resumes.filter(r => r.status === 'completed').length;
+                const draft = resumes.filter(r => r.status === 'draft').length;
+
+                document.getElementById('totalResumes').textContent = total;
+                document.getElementById('completedResumes').textContent = completed;
+                document.getElementById('draftResumes').textContent = draft;
+            }
+
+            // Render resume cards
+            function renderResumes(filter = 'all') {
+                const grid = document.getElementById('resumesGrid');
+                const filteredResumes = filter === 'all' 
+                    ? resumes 
+                    : resumes.filter(r => r.status === filter);
+
+                if (filteredResumes.length === 0) {
+                    grid.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-state-icon">📄</div>
+                            <div class="empty-state-text">No ${filter} resumes found</div>
+                            <a href="resume.html" class="btn btn-primary">Create New Resume</a>
+                        </div>
+                    `;
+                    return;
+                }
+
+                grid.innerHTML = filteredResumes.map(resume => `
+                    <div class="resume-card">
+                        <h3 class="resume-title">${resume.title}</h3>
+                        <div class="resume-date">Created on ${new Date(resume.date).toLocaleDateString()}</div>
+                        <div class="status-badge status-${resume.status}">
+                            ${resume.status.charAt(0).toUpperCase() + resume.status.slice(1)}
+                        </div>
+                        <div class="resume-actions">
+                            <a href="resume.html?id=${resume.id}" class="btn btn-primary">Edit</a>
+                            <a href="preview.html?id=${resume.id}" class="btn btn-secondary">Preview</a>
+                            <button onclick="deleteResume(${resume.id})" class="btn btn-danger">Delete</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Handle filter change
+            document.getElementById('resumeFilter').addEventListener('change', (e) => {
+                renderResumes(e.target.value);
+            });
+
+            // Delete resume
+            function deleteResume(id) {
+                if (confirm('Are you sure you want to delete this resume?')) {
+                    // Remove resume from array (replace with actual storage operation)
+                    const index = resumes.findIndex(r => r.id === id);
+                    if (index !== -1) {
+                        resumes.splice(index, 1);
+                        updateStats();
+                        renderResumes(document.getElementById('resumeFilter').value);
+                    }
+                }
+            }
+
+            // Logout function
+            function logout() {
+                if (confirm('Are you sure you want to logout?')) {
+                    handleLogout();
+                    window.location.href = 'index.html';
+                }
+            }
+
+            // Initial render
+            updateStats();
+            renderResumes();
+        </script>
+    </body>
+</html>

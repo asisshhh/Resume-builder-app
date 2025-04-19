@@ -1,0 +1,94 @@
+/* Classic Theme */
+:root {
+    --primary-color: #1a1a1a;
+    --secondary-color: #666666;
+    --text-color: #333333;
+    --bg-color: #f5f5f5;
+    --accent-color: #8b0000;
+}
+
+.preview-cnt {
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border: 1px solid #ddd;
+}
+
+.preview-cnt-l {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2rem;
+}
+
+.preview-cnt-r {
+    background-color: var(--bg-color);
+    padding: 2rem;
+}
+
+.preview-blk-title h3 {
+    color: var(--accent-color);
+    border-bottom: 1px solid var(--secondary-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-family: 'Times New Roman', serif;
+}
+
+.preview-item-val {
+    color: var(--text-color);
+    font-family: 'Times New Roman', serif;
+}
+
+.preview-image {
+    border: 2px solid var(--accent-color);
+    border-radius: 0;
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+}
+
+.preview-item-name .preview-item-val {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    font-family: 'Times New Roman', serif;
+}
+
+.designation {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    font-family: 'Times New Roman', serif;
+}
+
+.skills-items .preview-item {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    margin: 0.25rem;
+    border-radius: 0;
+}
+
+.experiences-items .preview-item,
+.educations-items .preview-item {
+    border-left: 2px solid var(--accent-color);
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.projects-items .preview-item {
+    background-color: #ffffff;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    margin-bottom: 1rem;
+}
+
+.achievements-items .preview-item {
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.achievements-items .preview-item::before {
+    content: "•";
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+} 

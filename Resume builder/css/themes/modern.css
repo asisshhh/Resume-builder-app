@@ -1,0 +1,91 @@
+/* Modern Theme */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --text-color: #2c3e50;
+    --bg-color: #ffffff;
+    --accent-color: #e74c3c;
+}
+
+.preview-cnt {
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.preview-cnt-l {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2rem;
+}
+
+.preview-cnt-r {
+    background-color: var(--bg-color);
+    padding: 2rem;
+}
+
+.preview-blk-title h3 {
+    color: var(--secondary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.preview-item-val {
+    color: var(--text-color);
+}
+
+.preview-image {
+    border: 4px solid var(--secondary-color);
+    border-radius: 50%;
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+}
+
+.preview-item-name .preview-item-val {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+}
+
+.designation {
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+}
+
+.skills-items .preview-item {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    margin: 0.25rem;
+    border-radius: 20px;
+}
+
+.experiences-items .preview-item,
+.educations-items .preview-item {
+    border-left: 3px solid var(--secondary-color);
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.projects-items .preview-item {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.achievements-items .preview-item {
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.achievements-items .preview-item::before {
+    content: "•";
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+} 
