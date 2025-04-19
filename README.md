@@ -30,7 +30,7 @@ A modern, responsive resume builder application that helps users create professi
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/resume-builder.git
+git clone https://github.com/asisshhh/resume-builder.git
 cd resume-builder
 ```
 
@@ -115,6 +115,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Contact
 
-Your Name - your.email@example.com
+Your Name - nayak.asishkumar07@gmail.com
 
-Project Link: [https://github.com/yourusername/resume-builder](https://github.com/yourusername/resume-builder) 
+Project Link: [[https://github.com/yourusername/resume-builder](https://github.com/yourusername/resume-builder) ](https://resume-builder-app-asisshhh-asisshhhs-projects.vercel.app?_vercel_share=lpHOX3vEEX1LS7qNqOA1sqGJCHYZIBJt)
